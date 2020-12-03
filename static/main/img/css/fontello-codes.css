@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+ 
+.icon-home:before { content: '\2302'; } /* '⌂' */
+.icon-twitter:before { content: '\f099'; } /* '' */
+.icon-instagram:before { content: '\f16d'; } /* '' */
+.icon-facebook-official:before { content: '\f230'; } /* '' */
+.icon-user:before { content: '👤'; } /* '\1f464' */

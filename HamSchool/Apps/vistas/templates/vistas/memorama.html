@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1,shrink-to-fit=no">
+        <meta name="description" content="Jugar memorama en línea">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Game Memo | Ham-School</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'main/img/css/fontello.css' %}">
+        <link rel="stylesheet" href="{% static 'main/ext/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/keyframes.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/banner.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/stylememo.css' %}">
+        <link rel="icon" type="image/png" href="{% static 'main/img/favicon.ico' %}"/>
+
+    </head>
+    <body>
+    <header>
+    <nav class="ham_navbar navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand ham-font-nav" href="index">Ham-School</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="btn btn-warning my-2 my-sm-0" href="index">Home</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a class="btn btn-danger my-2 my-sm-0" href="ahorcado">next</a>
+            </form>
+        </div>
+    </nav>
+    </header>
+        <main role="main" class="container-fluid" id="app">
+            <div class="row">
+                <div class="col-12">
+                    <h1></h1>
+                    <h1 class="text-center">Realiza el siguiente ejercicio | Memorama</h1>
+                    <p style="font-size: 30px">
+                        <span class="h3">Intentos: </span>
+                        {{intentos}}/{{MAXIMOS_INTENTOS}}&nbsp;<span class="h3">Aciertos:
+                        </span> {{aciertos}}
+                        <br><a @click="mostrarCreditos" href="#">Acerca de</a>
+                    </p>
+                </div>
+            </div>
+            <div v-for="(fila, indiceFila) in memorama" :key="indiceFila"
+                class="row">
+                <div :key="indiceFila+''+indiceImagen" class="col-3"
+                    v-for="(imagen, indiceImagen) in fila">
+                    <div class="mb-3">
+                        <img @click="voltear(indiceFila, indiceImagen)"
+                            :class="{'girar': imagen.mostrar}"
+                            :src="(imagen.mostrar ? imagen.ruta :
+                            NOMBRE_IMAGEN_OCULTA)" class="card-img-top img-fluid
+                            img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </main>
+    <script src="{% static 'main/js/sweetalert2.all.min.js' %}"></script>
+    <script src="{% static 'main/js/vue.min.js' %}"></script>
+    <script src="{% static 'main/js/scriptmemo.js' %}"></script>
+    <script src="{% static 'main/ext/bootstrap/js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'main/ext/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'main/js/index.js' %}"></script>
+    </body>
+
+</html>

@@ -1,0 +1,1 @@
+web: gunicorn HamSchool.wsgi --log-file -

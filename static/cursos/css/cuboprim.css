@@ -1,0 +1,185 @@
+body{
+ background: linear-gradient(to bottom, red, orange);
+background-size: 100% 1000px;
+}
+.arco {
+	width: 120px;
+	height: 50px;
+	background-size: 100% 100%;
+	position: absolute;
+	
+}
+.arco:nth-child(1){
+	background-image: url(../img/arco.png);
+	animation: movimiento 10s infinite;
+}
+.arco:nth-child(2){
+	margin-top: 30px;
+	background-image: url(../img/nube.png);
+	animation: movimientouno 5s infinite;
+}
+.arco:nth-child(3){
+	margin-top:-5px;
+	background-image: url(../img/sol.png) ;
+	animation: movimientodos 20s infinite;
+}
+.arco:nth-child(4){
+	margin-top: 45px;
+	background-image: url(../img/yellow.png);
+	animation: movimientotres 20s infinite;
+
+
+}
+.arco:nth-child(5){
+	margin-top: 300px;
+	background-image: url(../img/red.png);
+	animation: movimientocuatro 20s infinite;
+
+
+}
+.arco:nth-child(6){
+	margin-top: 400px;
+	background-image: url(../img/green.png);
+	animation: movimientocinco 20s infinite;
+}
+.arco:nth-child(7){
+	margin-top: 150px;
+	background-image: url(../img/blue.png);
+	animation: movimientoseis 20s infinite;
+
+
+}
+.arco:nth-child(8){
+	margin-top: 90px;
+	background-image: url(../img/nube.png);
+	animation: movimientosiete 20s infinite;
+
+
+}
+.arco:nth-child(9){
+	margin-top: 300px;
+	background-size: 50% ;
+	background-image: url(../img/cafe.png);
+	animation: movimientoocho 20s infinite;
+
+
+}
+.arco:nth-child(10){
+	margin-top: 250px;
+	background-image: url(../img/cafe1.png);
+	animation: movimientonueve 20s infinite;
+
+
+}
+
+
+
+@keyframes movimiento{
+	from{
+		margin-left: 40%;
+
+	}
+	to{
+		margin-left: 35%
+
+	}
+}
+@keyframes movimientouno{
+	from{
+		margin-left: 40%;
+
+	}
+	to{
+		margin-left: 35%
+
+	}
+}
+@keyframes movimientodos{
+	from{
+		margin-left: 40%;
+
+	}
+	to{
+		margin-left: 60%
+
+	}
+}
+@keyframes movimientotres{
+	from{
+		margin-left: 40%;
+
+	}
+	to{
+		margin-left: 60%
+
+	}
+}
+@keyframes movimientocuatro{
+	from{
+		margin-left: 40%;
+
+	}
+	to{
+		margin-left: 60%
+
+	}
+
+}
+@keyframes movimientocinco{
+	from{
+		margin-left: 40%;
+
+	}
+	to{
+		margin-left: 50%
+
+	}
+}
+@keyframes movimientoseis{
+	from{
+		margin-left: 30%;
+
+	}
+	to{
+		margin-left: 50%
+
+	}
+
+}
+@keyframes movimientosiete{
+	from{
+		margin-left: 30%;
+
+	}
+	to{
+		margin-left: 50%
+
+	}
+
+}
+@keyframes movimientoocho{
+	from{
+		margin-left: 40%;
+
+	}
+	to{
+		margin-left: 35%
+
+	}
+
+}
+@keyframes movimientonueve{
+	from{
+		margin-left: 40%;
+
+	}
+	to{
+		margin-left: 35%
+
+	}
+
+}
+
+
+
+

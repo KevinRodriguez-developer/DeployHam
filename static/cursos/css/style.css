@@ -1,0 +1,59 @@
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	body{
+		font-family: 'Barlow Condensed', sans-serif;
+		font-size: 25px;
+	}
+
+	
+
+	.ham_navbar{
+		background-color: rgba(255, 255, 255, 0.7) !important;
+	}
+
+	.ham_navbar div, .ham_navbar ul{
+		background-color: transparent !important;
+
+	}
+
+	.ham_cont_sec_1{
+		padding: 5%;
+
+	}
+
+	.ham_cont_sec_1_link{
+		padding: 5%;
+	}
+
+	.ham_cont_sec_1_link img{
+		width: 200px;
+		height: 100px;
+	}
+
+	.ham_cont_sec_1_link a{
+		width: 200px;
+	} 
+
+	.ham_cont_sec_1_link hr{
+		border-top: 1px solid rgba(1,1,1,0.3);
+	} 
+
+	.ham_cont_footer{
+		background-color: rgba(1,1,1,0.7);
+		padding: 1%;
+		color: #fff;
+	}
+
+	.ham_cont_footer a{
+		color: #fff;
+		text-decoration: none;
+		display: block;
+	}
+
+	.ham_cont_img_footer{
+		padding: 5%;
+	}

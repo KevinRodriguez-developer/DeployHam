@@ -1,0 +1,397 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1,shrink-to-fit=no">
+        <meta name="description" content="Jugar memorama en línea">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Game Ahorcado | Ham-School</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'cursos/img/css/fontello.css' %}">
+        <link rel="stylesheet" href="{% static 'cursos/ext/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'cursos/css/keyframes.css' %}">
+        <link rel="stylesheet" href="{% static 'cursos/css/banner.css' %}">
+        <link rel="stylesheet" href="{% static 'cursos/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'cursos/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'cursos/css/stylememo.css' %}">
+  
+    </head>
+    <body>
+    <header>
+    <nav class="ham_navbar navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand ham-font-nav" href="index">Ham-School</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                
+                <li class="nav-item">
+                    <a class="btn btn-warning my-2 my-sm-0" href="index">Home</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                
+                <a class="btn btn-danger my-2 my-sm-0" href="login">Log out</a>
+
+            </form>
+        </div>
+    </nav>
+    </header>
+        <main role="main" class="container-fluid" id="app">
+            <div class="row">
+                <div class="col-12">
+                    <h1></h1>
+                    <h1 class="text-center"style="font-size: 25px">Realiza el siguiente ejercicio</h1>
+
+                </div>
+            </div>
+ 
+
+     <style>
+            body{
+                width: 960px;
+                margin: 0 auto;
+            }
+            h1{
+                text-align: center;
+            }
+            #pantalla{
+                border: groove 8px gold;
+                background: pink;   
+            }
+            #boton{
+                background-color: orange;
+                color: white;
+                font-size: 20px;
+                text-align: center;
+                font-weight: bolder;
+                padding: 3px;
+                border: solid 2px black;
+            }
+            #boton:hover{ /* Estilo que se activa al pasar el puntero sobre el boton */
+                background-color: lightblue;
+                font-size: 22px;
+                border: groove 4px white;
+            }
+        </style>
+        </head>
+    <body>
+        <h1>-El juego del ahorcado-</h1>
+        <canvas id="pantalla" width="960px" height="450px"> <!-- etiqueta del canvas con sus medidas en la pantalla -->
+            Tu navegador no soporta Canvas.
+        </canvas>
+        <!-- El boton que nos sirve para recargar la pagina y asi generar una nueva palabra y volver a jugar -->
+        <button id="boton" type="reset" onclick="javascript:window.location.reload();">NUEVO JUEGO</button>
+        <script>
+            
+            /* Variables */
+            var ctx;
+            var canvas;
+            var palabra;
+            var letras = "QWERTYUIOPASDFGHJKLÑZXCVBNM";
+            var colorTecla = "#585858";
+            var colorMargen = "orange";
+            var inicioX = 200;
+            var inicioY = 300;
+            var lon = 35;
+            var margen = 20;
+            var pistaText = "";
+
+            /* Arreglos */
+            var teclas_array = new Array();
+            var letras_array = new Array();
+            var palabras_array = new Array();
+
+            /* Variables de control */
+            var aciertos = 0;
+            var errores = 0;
+            
+            /* Palabras */
+            palabras_array.push("BLUE");
+            palabras_array.push("RED");
+            palabras_array.push("YELLOW");
+            palabras_array.push("GREEN");
+            palabras_array.push("BROWN");
+
+
+            palabras_array.push("COW");
+            palabras_array.push("DOG");
+            palabras_array.push("CAT");
+            palabras_array.push("SHEEP");
+            palabras_array.push("CRICKET");
+            palabras_array.push("FROG");
+
+            palabras_array.push("RECTANGLE");
+            palabras_array.push("TRIANGLE");
+            palabras_array.push("SQUARE");
+            palabras_array.push("CIRCLE");
+
+
+
+                    
+            /* Objetos */
+            function Tecla(x, y, ancho, alto, letra){
+                this.x = x;
+                this.y = y;
+                this.ancho = ancho;
+                this.alto = alto;
+                this.letra = letra;
+                this.dibuja = dibujaTecla;
+            }
+            
+            function Letra(x, y, ancho, alto, letra){
+                this.x = x;
+                this.y = y;
+                this.ancho = ancho;
+                this.alto = alto;
+                this.letra = letra;
+                this.dibuja = dibujaCajaLetra;
+                this.dibujaLetra = dibujaLetraLetra;
+            }
+           
+            /* Funciones */
+
+            /* Dibujar Teclas*/
+            function dibujaTecla(){
+                ctx.fillStyle = colorTecla;
+                ctx.strokeStyle = colorMargen;
+                ctx.fillRect(this.x, this.y, this.ancho, this.alto);
+                ctx.strokeRect(this.x, this.y, this.ancho, this.alto);
+                
+                ctx.fillStyle = "white";
+                ctx.font = "bold 20px courier";
+                ctx.fillText(this.letra, this.x+this.ancho/2-5, this.y+this.alto/2+5);
+            }
+            
+            /* Dibua la letra y su caja */
+            function dibujaLetraLetra(){
+                var w = this.ancho;
+                var h = this.alto;
+                ctx.fillStyle = "black";
+                ctx.font = "bold 40px Courier";
+                ctx.fillText(this.letra, this.x+w/2-12, this.y+h/2+14);
+            }
+            function dibujaCajaLetra(){
+                ctx.fillStyle = "white";
+                ctx.strokeStyle = "black";
+                ctx.fillRect(this.x, this.y, this.ancho, this.alto);
+                ctx.strokeRect(this.x, this.y, this.ancho, this.alto);
+            }
+            
+            
+            /// Funcion para dar una pista la usuario ////
+            function pistaFunction(palabra){
+                let pista = ""; // Se crea la variable local pista que contendra nuestra frase de pista
+                switch(palabra){  // Se crea un switch para poder controlar las pistas segun la palabra 
+                    case 'BLUE':   // Se debera hacer un case por cada palabra 
+                        pista = "ES DEL COLOR DEL CIELO";
+                        break;     // Es importante el break en cada case 
+                    case 'RED':
+                        pista = "ES DEL COLOR DE UNA MANZANA";
+                        break;
+                    case 'GREEN':
+                        pista = "ES DEL COLOR DE LOS ARBOLES";
+                        break;
+                    case 'YELLOW':
+                        pista = "ES DEL COLOR DEL SOL";
+                        break;
+                         case 'COW':
+                        pista = "ES BLANCA CON NEGRO Y HACE MUUUU";
+                        break;
+                    case 'DOG':
+                        pista = "ES AMIGABLE Y HACE GUAF GUAF";
+                        break;
+                    case 'CAT':
+                        pista = "ES SILENCIOSO Y HACE MEW MEW";
+                        break;
+                    case 'SHEEP':
+                        pista = "ES BLANCA  Y HACE BEEE BEEE";
+                        break;
+                    case 'RECTANGLE':
+                        pista = "ES LARGO Y SE VE COMO UNA PUERTA";
+                        break;
+                   case 'TRIANGLE':
+                        pista = "TIENE 3 LADOS Y PARECE PIRAMIDE DE EGIPTO";
+                        break;
+                    case 'SQUARE':
+                        pista = "TIENE 4 LADOS Y SE PARECE A BOB-SPONJA";
+                        break;
+                    case 'CIRCLE':
+                        pista = "TIENE FORMA DE PELOTA";
+                        break;
+
+                }
+                // Pintamos la palabra en el canvas , en este ejemplo se pinta arriba a la izquierda //
+                ctx.fillStyle = "black";  // Aqui ponemos el color de la letra
+                ctx.font = "bold 20px Courier";  // aqui ponemos el tipo y tamaño de la letra
+                ctx.fillText(pista, 10, 15);  // aqui ponemos la frase en nuestro caso la variable pista , seguido de la posx y posy
+            }
+           
+                    
+             /* Distribuir nuestro teclado con sus letras respectivas al acomodo de nuestro array */
+            function teclado(){
+                var ren = 0;
+                var col = 0;
+                var letra = "";
+                var miLetra;
+                var x = inicioX;
+                var y = inicioY;
+                for(var i = 0; i < letras.length; i++){
+                    letra = letras.substr(i,1);
+                    miLetra = new Tecla(x, y, lon, lon, letra);
+                    miLetra.dibuja();
+                    teclas_array.push(miLetra);
+                    x += lon + margen;
+                    col++;
+                    if(col==10){
+                        col = 0;
+                        ren++;
+                        if(ren==2){
+                            x = 280;
+                        } else {
+                            x = inicioX;
+                        }
+                    }
+                    y = inicioY + ren * 50;
+                }
+            }
+            
+            
+            /* aqui obtenemos nuestra palabra aleatoriamente y la dividimos en letras */
+            function pintaPalabra(){
+                var p = Math.floor(Math.random()*palabras_array.length);
+                palabra = palabras_array[p];
+      
+                pistaFunction(palabra);
+            
+                var w = canvas.width;
+                var len = palabra.length;
+                var ren = 0;
+                var col = 0;
+                var y = 230;
+                var lon = 50;
+                var x = (w - (lon+margen) *len)/2;
+                for(var i=0; i<palabra.length; i++){
+                    letra = palabra.substr(i,1);
+                    miLetra = new Letra(x, y, lon, lon, letra);
+                    miLetra.dibuja();
+                    letras_array.push(miLetra);
+                    x += lon + margen;
+                }
+            }
+            
+            /* dibujar cadalzo y partes del pj segun sea el caso */
+            function horca(errores){
+                var imagen = new Image();
+                imagen.src = "{% static 'cursos/imagenes/ahorcado' %}"+errores+".png";
+                imagen.onload = function(){
+                    ctx.drawImage(imagen, 390, 0, 230, 230);
+                }
+                /*************************************************
+                // Imagen 2 mas pequeña a un lado de la horca //       
+                var imagen = new Image();
+                imagen.src = "imagenes/ahorcado"+errores+".png";
+                imagen.onload = function(){
+                    ctx.drawImage(imagen, 620, 0, 100, 100);
+                }
+                *************************************************/
+            }
+            
+            /* ajustar coordenadas */
+            function ajusta(xx, yy){
+                var posCanvas = canvas.getBoundingClientRect();
+                var x = xx-posCanvas.left;
+                var y = yy-posCanvas.top;
+                return{x:x, y:y}
+            }
+            
+            /* Detecta tecla clickeada y la compara con las de la palabra ya elegida al azar */
+            function selecciona(e){
+                var pos = ajusta(e.clientX, e.clientY);
+                var x = pos.x;
+                var y = pos.y;
+                var tecla;
+                var bandera = false;
+                for (var i = 0; i < teclas_array.length; i++){
+                    tecla = teclas_array[i];
+                    if (tecla.x > 0){
+                        if ((x > tecla.x) && (x < tecla.x + tecla.ancho) && (y > tecla.y) && (y < tecla.y + tecla.alto)){
+                            break;
+                        }
+                    }
+                }
+                if (i < teclas_array.length){
+                    for (var i = 0 ; i < palabra.length ; i++){ 
+                        letra = palabra.substr(i, 1);
+                        if (letra == tecla.letra){ /* comparamos y vemos si acerto la letra */
+                            caja = letras_array[i];
+                            caja.dibujaLetra();
+                            aciertos++;
+                            bandera = true;
+                        }
+                    }
+                    if (bandera == false){ /* Si falla aumenta los errores y checa si perdio para mandar a la funcion gameover */
+                        errores++;
+                        horca(errores);
+                        if (errores == 5) gameOver(errores);
+                    }
+                    /* Borra la tecla que se a presionado */
+                    ctx.clearRect(tecla.x - 1, tecla.y - 1, tecla.ancho + 2, tecla.alto + 2);
+                    tecla.x - 1;
+                    /* checa si se gano y manda a la funcion gameover */
+                    if (aciertos == palabra.length) gameOver(errores);
+                }
+            }
+            
+            /* Borramos las teclas y la palabra con sus cajas y mandamos msj segun el caso si se gano o se perdio */
+            function gameOver(errores){
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "black";
+
+                ctx.font = "bold 50px Courier";
+                if (errores < 5){
+                    ctx.fillText("¡LA RESPUESTA ES CORRECTA! ", 110, 280);
+                } else {
+                    ctx.fillText(" LA RESPUESTA ERA ", 110, 280);
+
+                }
+                
+                ctx.font = "bold 80px Courier";
+                lon = (canvas.width - (palabra.length*48))/2;
+                ctx.fillText(palabra, lon, 380);
+                horca(errores);
+            }
+            
+            /* Detectar si se a cargado nuestro contexco en el canvas, iniciamos las funciones necesarias para jugar o se le manda msj de error segun sea el caso */
+            window.onload = function(){
+                canvas = document.getElementById("pantalla");
+                if (canvas && canvas.getContext){
+                    ctx = canvas.getContext("2d");
+                    if(ctx){
+                        teclado();
+                        pintaPalabra();
+                        horca(errores);
+                        canvas.addEventListener("click", selecciona, false);
+                    } else {
+                        alert ("Error al cargar el contexto!");
+                    }
+                }
+            }
+        </script>
+    
+        </main>
+    <script src="{% static 'cursos/js/sweetalert2.all.min.js' %}"></script>
+    <script src="{% static 'cursos/js/vue.min.js' %}"></script>
+    <script src="{% static 'cursos/js/scriptmemo.js' %}"></script>
+    <script src="{% static 'cursos/ext/bootstrap/js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'cursos/ext/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'cursos/js/index.js' %}"></script>
+    </body>
+
+</html>

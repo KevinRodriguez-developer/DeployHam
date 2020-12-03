@@ -1,0 +1,39 @@
+{% load static %}
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'login/css/csslr.css' %}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap" rel="stylesheet">
+    </head>
+    
+    <body background="{% static 'login/img/fondo.jpg' %}">
+      <div class="menu">
+        <div id="fondom">
+
+          <a class="Registrar" href="register">Registrar</a>
+
+          <div class="cuadro">
+            <img src="{% static 'login/img/hamschool3.png' %}" id="logo" alt="Ham-School" width="250" height="100"/>
+          </div>
+
+
+          <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="text" id="usu" class="usu" name="username" placeholder="Usuario" autocomplete="off">
+            <input type="Password" id="pass" class="pass" name="password" placeholder="Contraseña" autocomplete="off">
+            <input type="submit" class="ini" value="Iniciar">
+          </form>
+
+        </div>
+
+        <div id="olv">
+          <a id="a1" class="contraseña" href="reset_password/">Olvidaste tu contraseña?</a>
+        </div>
+        
+      </div>
+  </body>
+</html>

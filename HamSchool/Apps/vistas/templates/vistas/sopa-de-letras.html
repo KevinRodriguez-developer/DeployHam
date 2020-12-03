@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Sopa de letras</title>
+	<script src="{% static 'main/assets/js/jquery-1.12.0.min.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'main/assets/css/estilosop.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="{% static 'main/ext/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/keyframes.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/banner.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/stylememo.css' %}">
+	<style>
+
+    body{  
+    background: -webkit-linear-gradient(to right, #fff700, #ff0000);
+    background: linear-gradient(to right, #fff700, #ff0000);
+    }    
+    /* Para un comportamiento responsive */
+    .carousel-inner img {
+    width: 100%;
+    height: 100%;
+    }
+  </style> 
+
+<nav class="ham_navbar navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand ham-font-nav" href="index">Ham-School</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="btn btn-warning my-2 my-sm-0" href="index">Home</a>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<a class="btn btn-danger my-2 my-sm-0" href="ahorcado">next</a>
+		</form>
+	</div>
+</nav>
+</head>
+<body>
+	<div align="center">
+	
+	<h4 style="font-family: arial;">Find the following words in the next exercise:</h4>
+	<ul class="navega">
+  		<li>Head</li>
+  		<li>Purple</li>
+  		<li>Black</li>
+  		<li>Arm</li>
+  		<li>Pink</li>
+  		<li>Orange</li>
+  		<li>Toes</li>
+  		<li>Blue</li>
+  		<li>Shoulder</li>
+  		<li>White</li>
+	</ul>
+	</div>
+	<div id="sopa">
+		<div id="contenedor">
+			<div class="caja head"><strong>H</strong></div>
+			<div class="caja head purple"><strong>E</strong></div>	
+			<div class="caja head"><strong>A</strong></div>
+			<div class="caja head"><strong>D</strong></div>
+			<div class="caja"><strong>Q</strong></div>
+			<div class="caja toes"><strong>T</strong></div>
+			<div class="caja"><strong>W</strong></div>
+			<div class="caja sho"><strong>S</strong></div>
+
+			<div class="caja black"><strong>B</strong></div>
+			<div class="caja purple"><strong>L</strong></div>
+			<div class="caja"><strong>E</strong></div>
+			<div class="caja"><strong>R</strong></div>
+			<div class="caja"><strong>T</strong></div>
+			<div class="caja toes"><strong>O</strong></div>
+			<div class="caja"><strong>Y</strong></div>
+			<div class="caja sho"><strong>H</strong></div>
+
+			<div class="caja black"><strong>L</strong></div>
+			<div class="caja purple"><strong>P</strong></div>
+			<div class="caja"><strong>U</strong></div>
+			<div class="caja"><strong>I</strong></div>
+			<div class="caja pink"><strong>K</strong></div>
+			<div class="caja orange toes"><strong>E</strong></div>
+			<div class="caja"><strong>P</strong></div>
+			<div class="caja sho"><strong>O</strong></div>
+
+			<div class="caja black arm"><strong>A</strong></div>
+			<div class="caja purple arm"><strong>R</strong></div>
+			<div class="caja arm"><strong>M</strong></div>
+			<div class="caja pink"><strong>N</strong></div>
+			<div class="caja orange"><strong>G</strong></div>
+			<div class="caja toes"><strong>S</strong></div>
+			<div class="caja"><strong>F</strong></div>
+			<div class="caja sho"><strong>U</strong></div>
+
+			<div class="caja black"><strong>C</strong></div>
+			<div class="caja purple"><strong>U</strong></div>
+			<div class="caja pink"><strong>I</strong></div>
+			<div class="caja orange"><strong>N</strong></div>
+			<div class="caja"><strong>Z</strong></div>
+			<div class="caja"><strong>X</strong></div>
+			<div class="caja"><strong>C</strong></div>
+			<div class="caja sho"><strong>L</strong></div>
+
+			<div class="caja black"><strong>K</strong></div>
+			<div class="caja purple pink"><strong>P</strong></div>
+			<div class="caja orange"><strong>A</strong></div>
+			<div class="caja"><strong>V</strong></div>
+			<div class="caja"><strong>B</strong></div>
+			<div class="caja"><strong>N</strong></div>
+			<div class="caja"><strong>M</strong></div>
+			<div class="caja sho"><strong>D</strong></div>
+
+			<div class="caja"><strong>L</strong></div>
+			<div class="caja orange"><strong>R</strong></div>
+			<div class="caja"><strong>K</strong></div>
+			<div class="caja"><strong>J</strong></div>
+			<div class="caja blue"><strong>B</strong></div>
+			<div class="caja blue"><strong>L</strong></div>
+			<div class="caja blue"><strong>U</strong></div>
+			<div class="caja blue sho"><strong>E</strong></div>
+
+			<div class="caja orange"><strong>O</strong></div>
+			<div class="caja"><strong>H</strong></div>
+			<div class="caja wh"><strong>W</strong></div>
+			<div class="caja wh"><strong>H</strong></div>
+			<div class="caja wh"><strong>I</strong></div>
+			<div class="caja wh"><strong>T</strong></div>
+			<div class="caja wh"><strong>E</strong></div>
+			<div class="caja sho"><strong>R</strong></div>
+		</div>
+	</div>
+	<script src="{% static 'main/assets/js/codsop.js' %}"></script>
+</body>
+</html>

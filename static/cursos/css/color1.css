@@ -1,0 +1,25 @@
+#cuadro {
+
+	width: 200px;
+	height: 200px;
+	background: #aaa;
+	animation-name: mianimacion;
+	animation-duration: 4s;
+	position: relative;
+}
+@keyframes mianimacion {
+	0% {background:#aaa; left: 0;top:0px;}
+	15% {background: white; left: 100px;top:0px}
+	25% {background: red;left: 200px;}
+	55% {background:yellow;left: 300px;}
+	65% {background:purple; left: 400px;}
+	75% {background: pink;left: 500px; }
+	85% {background:green;left: 600px; }
+	95% {background:blue;left: 700px; }
+	100% {background:black; left: 1000px;}
+	
+
+
+
+
+}

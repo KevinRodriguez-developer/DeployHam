@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta name="viewport" content="width=device-width">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> Cursos | Inglés</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'main/img/css/fontello.css' %}">
+	<link rel="stylesheet" href="{% static 'main/ext/bootstrap/css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/keyframes.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/banner.css' %}">
+	<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+  <link rel="icon" type="image/png" href="{% static 'main/img/favicon.ico' %}"/>
+
+</head>
+<body>
+<header>
+	<nav class="ham_navbar navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand ham-font-nav" href="index">Ham-School</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a style="color: black;" target="_blank" href="https://www.facebook.com/hamsch00l"><i style="color: black; font-size: 25px" class="icon-facebook-official"></i> Facebook</a>
+      </li>
+      <li class="nav-item">
+        <a style="color: black;" target="_blank" href="https://www.instagram.com/ham.school/"><i style="color: black; font-size: 25px" class="icon-instagram"></i>Instagram</a>
+      </li>
+      <li class="nav-item">
+        <a style="color: black;" target="_blank" href=""><i style="color: black; font-size: 25px" class="icon-twitter"></i>Twitter</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</header>
+
+<section>
+  <div class="ham_cont_banner">
+    <div class="ham_sombra">
+      <img style="width: 500px; height: 200px;" class="img-fluid" alt="clase online" src="{% static 'main/img/hamschool3.png' %}">
+      <p> Nuestros Cursos</p>
+      <hr/>
+      <div id=paypal-button-container></div>
+      <div class="ham_cont_banner_link">
+        <script
+        src="https://www.paypal.com/sdk/js?client-id=AXpQqh3QLRbyEJXeGDFh1UkHXY4Fxa40-Xh4FX8CAHhosDerTLL1pAi7ojjnmJmv78XwxfZ_-ZbeHhH5"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+      </script>
+    
+        <script>
+            paypal.Buttons({
+              createOrder: function(data, actions) {
+                // This function sets up the details of the transaction, including the amount and line item details.
+                return actions.order.create({
+                  purchase_units: [{
+                    amount: {
+                      value: '1.00'
+                    }
+                  }]
+                });
+              },
+              onApprove: function(data, actions) {
+                // This function captures the funds from the transaction.
+                return actions.order.capture().then(function(details) {
+                  // This function shows a transaction success message to your buyer.
+                  alert('Transaction completed by ' + details.payer.name.given_name);
+                  window.location="Primaria";
+                });
+              }
+            }).render('#paypal-button-container');
+            //This function displays Smart Payment Buttons on your web page.
+          </script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row ham_cont_sec_1">
+      <div class="col-md-9" style="font-size: 23px">
+        <h2><b>About Ham-School</b></h2>
+        <p><i>The best english option</i></p>
+        <hr/>
+        <p>This project consists of teaching interactive English courses to primary and secondary school children through a digital medium, with the purpose of helping their learning and orienting them to better learning.</p>
+      </div>
+      <div class="ham_cont_sec_1_link col-md-3 text-center">
+        <img src="{% static 'main/img/hamschool4.png' %}">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ham_cont_footer">
+  <div>
+    <p class="text-center">&copy; 2020 <a href="#" class="text-white">Ham-School</a>. All Rights Reserved.<a class="text-white"></a></p>
+  </div>
+</footer>
+
+<script src="{% static 'main/ext/bootstrap/js/jquery-3.5.1.min.js' %}"></script>
+<script src="{% static 'main/ext/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'main/js/index.js' %}"></script>
+</body>
+</html>

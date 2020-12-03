@@ -1,0 +1,35 @@
+body {
+
+
+	margin: 0px;
+	background: #333333;
+
+}
+
+.animation{
+   position: absolute;
+   top:50%
+   left: 50%;
+   margin-top: 50px;
+   margin-left: -10px;
+
+   animation-name: ham;
+   animation-duration: .8s;
+   animation-timing-function: lineal;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+
+
+
+}
+@keyframes ham{
+	from{
+		transform: scale(1);
+
+	}
+	to{
+		transform: scale(1.1);
+	}
+
+
+}
